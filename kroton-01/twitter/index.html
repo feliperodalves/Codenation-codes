@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="nav">
+        <img class="logo" src="imgs/logo.png" />
+
+        <ul>
+          <li>
+            <a href="">
+              <img src="imgs/home.png" />
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="imgs/hashtag.png" />
+              <span>Explore</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="imgs/notification.png" />
+              <span>Notifications</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="imgs/email.png" />
+              <span>Messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="imgs/bookmark.png" />
+              <span>Booksmarks</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="imgs/list.png" />
+              <span>Lists</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="imgs/more.png" />
+              <span>More</span>
+            </a>
+          </li>
+        </ul>
+
+        <button class="tweet">Tweet</button>
+      </div>
+
+      <div class="content">
+        <div class="page-header">
+          <span>Home</span>
+        </div>
+
+        <div class="tweet-form">
+          <div>
+            <img src="imgs/boy.png" />
+          </div>
+          <form>
+            <span style="margin-bottom: 2rem">What's happening?</span>
+            <div class="actions">
+              <div>
+                <img src="imgs/picture.png" style="margin-right: .1rem" />
+                <img src="imgs/gif.png" style="margin-right: .1rem" />
+                <img src="imgs/bar-chart.png" style="margin-right: .1rem" />
+                <img src="imgs/smile.png" style="margin-right: .1rem" />
+              </div>
+              <div style="flex: 1;justify-content: flex-end;display: flex;">
+                <button class="tweet" style="width: auto; padding: .6rem 1rem">
+                  Tweet
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <ul class="tweets">
+          <li class="tweet">
+            <div>
+              <img src="imgs/boy.png" />
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div class="user">
+                <span class="author">Brie</span>
+                <span class="username">@Sktch_ComedyFan</span>
+                <span>-</span>
+                <span class="time">3m</span>
+              </div>
+              <p class="message">
+                Giving standup comedy a go. Open mic starts at 7, hit me up if
+                you want ticket <i>#heregoesnothing</i>
+              </p>
+              <ul class="actions">
+                <li>
+                  <img src="imgs/conversation.png" />
+                  <span>1</span>
+                </li>
+                <li>
+                  <img src="imgs/retweet.png" />
+                </li>
+                <li>
+                  <img src="imgs/heart.png" />
+                  <span>8</span>
+                </li>
+                <li>
+                  <img src="imgs/upload.png" />
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="tweet">
+            <div>
+              <img src="imgs/boy.png" />
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div class="user">
+                <span class="author">Harold</span>
+                <span class="username">@h_wang88</span>
+                <span>-</span>
+                <span class="time">10m</span>
+              </div>
+              <p class="message">
+                Vacation is going great!
+              </p>
+
+              <img src="imgs/boruto.jpeg" class="tweet-picture" />
+
+              <ul class="actions">
+                <li>
+                  <img src="imgs/conversation.png" />
+                  <span>1</span>
+                </li>
+                <li>
+                  <img src="imgs/retweet.png" />
+                </li>
+                <li>
+                  <img src="imgs/heart.png" />
+                  <span>8</span>
+                </li>
+                <li>
+                  <img src="imgs/upload.png" />
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="aside">
+        <input class="search" type="text" placeholder="Search Twitter" />
+      </div>
+    </div>
+  </body>
+</html>
