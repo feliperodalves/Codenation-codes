@@ -1,0 +1,13 @@
+input.search[type="text"] {
+  background-image: url(../imgs/magnifying-glass.png);
+  background-color: #ebedee;
+  background-repeat: no-repeat;
+  background-position: 7px 7px;
+  border: none;
+  outline: none;
+  color: #949494;
+  border-radius: 50px;
+  padding-left: 32px;
+  height: 32px;
+  width: 100%;
+}
