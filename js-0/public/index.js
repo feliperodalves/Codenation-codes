@@ -1,48 +1,11 @@
-const input = {
-  value: '',
-  listeners: { onsubmit: [], onchange: [] },
-  addListener(key, fn) {
-    this.listeners[key].push(fn);
-  },
-  invoke(key) {
-    for (const listener of this.listeners[key]) {
-      listener(this.value);
-    }
-  },
-};
-
-function handleSubmit(e) {
-  e.preventDefault();
-  input.invoke('onsubmit');
-  e.target.reset();
-}
-
-function handleChange(e) {
-  input.value = e.target.value;
-  input.invoke('onchange');
-}
-
-function addListener(key, fn) {
-  input.addListener(key, fn);
-}
-
 function checkPalindrome(word) {
-  if (
-    word
-      .split('')
-      .reverse()
-      .join('') === word
-  ) {
-    return true;
-  }
-  return false;
-}
+  const clean = word.replace(/[^A-Z0-9]+/gi, '');
+  const reverse = clean
+    .split('')
+    .reverse()
+    .join('');
 
-function limpaHistorico() {
-  const table = document.querySelectorAll('#results>tr');
-  for (const row of table) {
-    row.innerHTML = '';
-  }
+  return clean === reverse;
 }
 
 function addToList(field) {
@@ -54,30 +17,36 @@ function addToList(field) {
 
   wordTD.innerText = field;
   if (checkPalindrome(field)) {
-    palindromeTD.innerHTML = 'Sim';
+    palindromeTD.innerHTML = 'sim';
     palindromeResult.value = 'positivo';
   } else {
-    palindromeTD.innerHTML = 'Não';
+    palindromeTD.innerHTML = 'não';
     palindromeResult.value = 'negativo';
   }
 
   row.appendChild(wordTD);
-  palindromeTD.attributes.setNamedItem(palindromeResult);
+  row.attributes.setNamedItem(palindromeResult);
   row.appendChild(palindromeTD);
 
   table.appendChild(row);
 }
 
+function handleSubmit(e) {
+  e.preventDefault();
+  const word = document.querySelector('#palindrome-input').value;
+  if (word.trim() !== '') {
+    addToList(word);
+  }
+  e.target.reset();
+}
+
+function limpaHistorico() {
+  document.querySelector('#results').innerHTML = '';
+}
+
 document
   .querySelector('#palindrome-form')
   .addEventListener('submit', handleSubmit);
-
 document
-  .querySelector('#palindrome-input')
-  .addEventListener('keyup', handleChange);
-
-addListener('onsubmit', (field) => {
-  if (field.trim().length > 0) {
-    addToList(field);
-  }
-});
+  .querySelector('[data-test="limpar-dados"]')
+  .addEventListener('click', limpaHistorico);
