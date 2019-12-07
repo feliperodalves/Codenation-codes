@@ -1,4 +1,4 @@
-const assert = require("assert");
+const assert = require('assert');
 
 /**
  * Main input selector.
@@ -11,7 +11,7 @@ const selector = '[data-test="entrada"]';
  */
 const typeInput = async (input, string) => {
   await page.type(selector, string);
-  await page.keyboard.press("Enter");
+  await page.keyboard.press('Enter');
 };
 
 /**
@@ -29,7 +29,7 @@ const getInput = async () => {
 
     return input;
   } catch (e) {
-    assert(false, "Could not find the input");
+    assert(false, 'Could not find the input');
   }
 };
 
@@ -41,16 +41,16 @@ const assertString = async (selector, input, string, flag) => {
 
   assert(
     (await page.content()).match(string),
-    "Could not find the checked string in page"
+    'Could not find the checked string in page',
   );
   assert(
-    (await page.$(`[data-verificado="${flag ? "positivo" : "negativo"}"]`)) !==
-      null,
-    "Could not find the correct data-verificado of this the checked string"
+    (await page.$(`[data-verificado="${flag ? 'positivo' : 'negativo'}"]`))
+      !== null,
+    'Could not find the correct data-verificado of this the checked string',
   );
   assert(
-    await page.$eval(selector, input => input.value == ""),
-    "Input should be reseted after submission"
+    await page.$eval(selector, (input) => input.value == ''),
+    'Input should be reseted after submission',
   );
 };
 
@@ -59,63 +59,63 @@ const assertString = async (selector, input, string, flag) => {
  */
 const load = async () => {
   try {
-    await page.goto("http://localhost:1337");
+    await page.goto('http://localhost:1337');
   } catch (e) {
     await load();
   }
 };
 
-describe("Palindrome", () => {
+describe('Palindrome', () => {
   beforeEach(load);
 
-  it("should have a global react instance", async () => {
+  it('should have a global react instance', async () => {
     assert(
-      await page.evaluate(() => typeof window.React !== "undefined"),
-      "React instance not found in page"
+      await page.evaluate(() => typeof window.React !== 'undefined'),
+      'React instance not found in page',
     );
   });
 
-  it("should be able to add a new record if it is not empty", async () => {
+  it('should be able to add a new record if it is not empty', async () => {
     const input = await getInput();
 
-    await typeInput(input, "   ");
+    await typeInput(input, '   ');
 
     assert(
       (await page.$$('[data-verificado="negativo"]')).length === 0,
-      "Empty string or composed only of spaces should not be validated"
+      'Empty string or composed only of spaces should not be validated',
     );
     assert(
       (await page.$$('[data-verificado="positivo"]')).length === 0,
-      "Empty string or composed only of spaces should not be validated"
+      'Empty string or composed only of spaces should not be validated',
     );
 
-    await assertString(selector, input, "not a palindrome", false);
-    await assertString(selector, input, "testset", true);
+    await assertString(selector, input, 'not a palindrome', false);
+    await assertString(selector, input, 'testset', true);
   });
 
-  it("should be able to clear history data", async () => {
+  it('should be able to clear history data', async () => {
     const input = await getInput();
 
-    await typeInput(input, "teste");
-    await typeInput(input, "teste");
-    await typeInput(input, "teste");
-    await typeInput(input, "teste");
-    await typeInput(input, "teste");
+    await typeInput(input, 'teste');
+    await typeInput(input, 'teste');
+    await typeInput(input, 'teste');
+    await typeInput(input, 'teste');
+    await typeInput(input, 'teste');
 
     assert(
       (await page.$$('[data-verificado="negativo"]')).length === 5,
-      "Palindrome verification do not work"
+      'Palindrome verification do not work',
     );
 
     const button = await page.$('[data-test="limpar-dados"]');
 
-    assert(button !== null, "Could not find clear data button");
+    assert(button !== null, 'Could not find clear data button');
 
     await button.click();
 
     assert(
       (await page.$$('[data-verificado="negativo"]')).length === 0,
-      "Palindrome clear data button do not work"
+      'Palindrome clear data button do not work',
     );
   });
 });

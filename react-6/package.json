@@ -13,8 +13,5 @@
     "jest": "^24.8.0",
     "jest-puppeteer": "^4.2.0",
     "puppeteer": "^1.17.0"
-  },
-  "dependencies": {
-    "codenation-jest-score": "https://github.com/thecodenation/codenation-jest-score/tarball/master"
   }
 }
