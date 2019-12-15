@@ -1,0 +1,45 @@
+nav {
+  padding: 1rem;
+}
+
+nav > .logo {
+  width: 32px;
+  cursor: pointer;
+  position: fixed;
+}
+
+nav > ul {
+  font-size: 18px;
+  margin-top: calc(1rem + 32px);
+}
+
+nav > ul > li {
+  margin-bottom: 1rem;
+}
+
+nav > ul > li:first-child > a {
+  color: #00acee;
+}
+
+nav > ul > li a {
+  color: black;
+}
+
+nav > ul a > *:first-child {
+  width: 24px;
+  margin-right: 1rem;
+}
+
+button.tweet {
+  width: 100%;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #00acee;
+  border: none;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}

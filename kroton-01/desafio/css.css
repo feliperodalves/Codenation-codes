@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #15202b;
+  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  height: 100%;
+}
+
+input,
+button {
+  outline: 0;
+}
+
+.content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#left {
+  width: 275px;
+  padding: 0 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+}
+
+.menu li {
+  padding: 4px 0;
+  height: 50.5px;
+}
+
+.menu li a {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.625px;
+  border-radius: 22.5px;
+  color: #fff;
+  transition-duration: 0.2s;
+}
+
+.menu li a:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+  color: rgb(29, 161, 242);
+  transition-duration: 0.3s;
+  transition-property: background-color, box-shadow;
+}
+
+.menu li a:hover svg {
+  fill: rgb(29, 161, 242);
+}
+
+svg {
+  width: 24.5px;
+  height: 24.5px;
+  fill: #fff;
+}
+.menu li a img {
+  width: 24.5px;
+  height: 24.5px;
+  border-radius: 50%;
+  border: none;
+}
+.menu li a div {
+  margin: 0 14px 0 18px;
+}
+
+.menu li button {
+  height: 46px;
+  width: 200px;
+  color: #fff;
+  border: 0;
+  border-radius: 23px;
+  cursor: pointer;
+  background-color: rgb(29, 161, 242);
+  transition-duration: 0.3s;
+  transition-property: background-color, box-shadow;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.menu li button:hover {
+  background-color: rgb(26, 146, 220);
+  transition-duration: 0.3s;
+  transition-property: background-color, box-shadow;
+}
+
+main {
+  width: 600px;
+}
+
+#right {
+  width: 350px;
+}
+
+#right > div {
+  height: 39px;
+  margin: 7px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(37, 51, 65);
+  border: none;
+  border-radius: 19.5px;
+}
+#right div svg {
+  padding-left: 10px;
+  height: 24px;
+  width: 30px;
+  fill: rgb(238, 238, 238);
+}
+
+#right div input {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(238, 238, 238);
+  border: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#right div:focus-within {
+  border: solid 1px rgb(26, 146, 220);
+}
+#right div:focus-within svg {
+  fill: rgb(26, 146, 220);
+}
+
+#right section {
+  background-color: rgb(25, 39, 52);
+  border-radius: 14px;
+  margin-bottom: 15px;
+}
+
+#right section h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 25px;
+  padding: 10px 15px;
+  border-bottom: solid 1px rgb(56, 68, 77);
+}
+
+#right section ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#right section ul li {
+  padding: 10px 15px;
+  border-bottom: solid 1px rgb(56, 68, 77);
+  list-style: none;
+}
+
+#right section ul li:hover {
+  background-color: rgba(107, 125, 140, 0.2);
+}
+#right section ul li:hover:last-child {
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+#right section ul li:last-child {
+  border: none;
+}
+
+#right section ul li p.trending {
+  font-size: 13px;
+  line-height: 18px;
+  color: rgb(136, 153, 166);
+}
+
+#right section ul li p.title {
+  padding-top: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #fff;
+}
+
+#right section ul li p.tweets {
+  padding-top: 2px;
+  font-size: 13px;
+  line-height: 18px;
+  color: rgb(136, 153, 166);
+}
+
+.whotofollow li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.whotofollow li img {
+  margin: 0 5px;
+  height: 47px;
+  width: 47px;
+  border-radius: 50%;
+}
+
+.whotofollow li > div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.whotofollow li > div a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+}
+.whotofollow li > div a p {
+  font-weight: 700;
+}
+
+.whotofollow li > div a span {
+  color: rgb(136, 153, 166);
+}
+
+.whotofollow li > div a:hover p {
+  text-decoration: underline;
+}
+.whotofollow li > div button {
+  height: 28px;
+  padding: 0 15px;
+  border: solid 1px rgb(29, 161, 242);
+  border-radius: 14px;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(29, 161, 242);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.whotofollow li > div button:hover {
+  background-color: rgba(29, 161, 242, 0.2);
+}

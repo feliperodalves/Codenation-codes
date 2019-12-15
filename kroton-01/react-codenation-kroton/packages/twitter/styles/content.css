@@ -1,0 +1,60 @@
+main {
+  border-left: 1px solid #ebedee;
+  border-right: 1px solid #ebedee;
+}
+
+main > header {
+  display: flex;
+  font-size: 18px;
+  padding: 1rem;
+  border-bottom: 1px solid #ebedee;
+}
+
+.tweet-form {
+  color: #949494;
+  font-size: 14px;
+  border-bottom: 1px solid #ebedee;
+  padding: 0.5rem;
+}
+
+.tweet-form form .actions {
+  align-items: baseline;
+  margin-top: 1rem;
+}
+
+.tweets {
+  font-size: 14px;
+}
+
+.tweet {
+  display: flex;
+  color: #949494;
+  background: white;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ebedee;
+}
+
+.tweet .user {
+  margin-bottom: 4px;
+}
+
+.tweet .user .author {
+  color: black;
+}
+
+.tweet p.message {
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.tweet p.message i {
+  color: #00acee;
+  font-style: inherit;
+}
+
+.tweet .tweet-picture {
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #ebedee;
+  border-radius: 10px;
+}
