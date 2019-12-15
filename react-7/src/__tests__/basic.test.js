@@ -1,23 +1,23 @@
-const assert = require("assert");
+const assert = require('assert');
 
 /**
  * Load page recursive.
  */
 const load = async () => {
   try {
-    await page.goto("http://localhost:3000");
+    await page.goto('http://localhost:3000');
   } catch (e) {
     await load();
   }
 };
 
-describe("Quiz", () => {
+describe('Quiz', () => {
   beforeEach(load);
 
-  it("should have at least one question with options", async () => {
+  it('should have at least one question with options', async () => {
     const questions = await page.$$('[data-test="pergunta"]');
 
-    assert(questions.length > 0, "Quiz should have questions.");
+    assert(questions.length > 0, 'Quiz should have questions.');
 
     const options = await Promise.all(
       questions.map(question => question.$$('[data-test="opcao"]'))
@@ -31,14 +31,14 @@ describe("Quiz", () => {
     );
   });
 
-  it("should be able to answer a question", async () => {
+  it('should be able to answer a question', async () => {
     const question = await page.$('[data-test="pergunta"]');
 
-    assert(question !== null, "Quiz should have questions.");
+    assert(question !== null, 'Quiz should have questions.');
 
     const option = await question.$('[data-test="opcao"]');
 
-    assert(option !== null, "Question should have options.");
+    assert(option !== null, 'Question should have options.');
 
     await option.click();
 
@@ -48,15 +48,15 @@ describe("Quiz", () => {
     );
 
     assert(
-      ["correta", "errada"].includes(answer),
+      ['correta', 'errada'].includes(answer),
       'Question should have a data attribute "resposta" with the answer.'
     );
   });
 
-  it("should show correct answers count and reset button", async () => {
+  it('should show correct answers count and reset button', async () => {
     const questions = await page.$$('[data-test="pergunta"]');
 
-    assert(questions.length > 0, "Quiz sohuld have questions.");
+    assert(questions.length > 0, 'Quiz sohuld have questions.');
 
     const choices = await Promise.all(
       questions.map(async (question, index) => {
@@ -81,18 +81,18 @@ describe("Quiz", () => {
 
     assert(
       (await page.$(`[data-resultado="${correct}"]`)) !== null,
-      "Can not assert correct answers count."
+      'Can not assert correct answers count.'
     );
 
     const button = await page.$('[data-test="refazer"]');
 
-    assert(button !== null, "Could not find the reset button.");
+    assert(button !== null, 'Could not find the reset button.');
 
     await button.click();
 
     assert(
       (await page.$(`[data-resultado="${correct}"]`)) === null,
-      "Correct answers score should be reseted after clicking reset button."
+      'Correct answers score should be reseted after clicking reset button.'
     );
 
     const answers = await page.$$eval('[data-test="pergunta"]', questions =>
@@ -100,7 +100,7 @@ describe("Quiz", () => {
     );
 
     assert(
-      answers.filter(answer => ["correta", "errada"].includes(answer))
+      answers.filter(answer => ['correta', 'errada'].includes(answer))
         .length === 0,
       'Question data attribute "resposta" should be reseted after clicking reset button.'
     );
