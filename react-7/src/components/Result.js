@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Result({ corrects, totalQuestions, handleReset }) {
   return (
-    <div data-resultado={corrects}>
+    <div data-resultado={corrects === -1 ? 0 : corrects}>
       {`Você acertou ${
         corrects === -1 ? 0 : corrects
       } de ${totalQuestions} perguntas!`}

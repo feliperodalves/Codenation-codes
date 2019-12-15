@@ -14,7 +14,7 @@ function App() {
     setQuestions(baseQuestions);
   }, []);
 
-  const handleAnswer = (questionId, answerId) => {
+  const handleAnswer = async (questionId, answerId) => {
     const temp = questions.map(q =>
       q.id === questionId
         ? {
@@ -33,14 +33,14 @@ function App() {
           }
         : q
     );
-    setQuestions(temp);
-    setRespondidas(respondidas + 1);
+    await setQuestions(temp);
+    await setRespondidas(respondidas + 1);
   };
 
-  const handleReset = () => {
-    setResultados(-1);
-    setRespondidas(0);
-    setQuestions(baseQuestions);
+  const handleReset = async () => {
+    await setResultados(-1);
+    await setRespondidas(0);
+    await setQuestions(baseQuestions);
   };
 
   return (
