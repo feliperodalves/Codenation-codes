@@ -1,7 +1,7 @@
-import React from "react";
-import { BrowserRouter, Link } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 
-import Routes from "./routes";
+import Routes from './routes';
 
 function App() {
   return (
