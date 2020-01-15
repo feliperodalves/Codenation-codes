@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bulma-components';
+import { Container, Heading, Button } from 'react-bulma-components';
+import PropTypes, { arrayOf } from 'prop-types';
+import { MdCheck, MdClose } from 'react-icons/md';
 
 export default function Question({ question, handleAnswer }) {
   const [status, setStatus] = useState('');
@@ -21,15 +23,24 @@ export default function Question({ question, handleAnswer }) {
   }, [question]);
 
   return (
-    <div data-test="pergunta" data-resposta={status}>
-      <h2>{question.question}</h2>
+    <Container
+      data-test="pergunta"
+      data-resposta={status}
+      style={{ marginTop: '20px' }}
+    >
+      <Heading size={2}>{question.question}</Heading>
 
       {question.answers.map(answer => {
-        const color = '';
+        let color = '';
+        if (question.answered && answer.correct) {
+          color = 'success';
+        } else if (question.answered && answer.selected) {
+          color = 'danger';
+        }
 
         return (
           <Button
-            // fullwidth
+            fullwidth
             color={color}
             disabled={!!question.answered}
             type="button"
@@ -38,11 +49,35 @@ export default function Question({ question, handleAnswer }) {
             onClick={() => {
               handleAnswer(question.id, answer.id);
             }}
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginBottom: '5px',
+            }}
           >
-            {answer.answer}
+            <span>{answer.answer}</span>
+            {color === 'success' && <MdCheck />}
+
+            {color === 'danger' && <MdClose />}
           </Button>
         );
       })}
-    </div>
+    </Container>
   );
 }
+
+Question.propTypes = {
+  question: PropTypes.shape({
+    answered: PropTypes.bool,
+    id: PropTypes.number.isRequired,
+    question: PropTypes.string.isRequired,
+    answers: arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        answer: PropTypes.string.isRequired,
+        correct: PropTypes.bool.isRequired,
+      }).isRequired
+    ),
+  }).isRequired,
+  handleAnswer: PropTypes.func.isRequired,
+};
