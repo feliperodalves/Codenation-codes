@@ -42,7 +42,7 @@ function App() {
     await setRespondidas(0);
     await setQuestions(baseQuestions);
   };
-  console.log(questions);
+
   return (
     <>
       {questions.map(question => (

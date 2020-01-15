@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Heading, Button, Icon } from 'react-bulma-components';
+import { Container, Heading, Button } from 'react-bulma-components';
 import PropTypes, { arrayOf } from 'prop-types';
 import { MdCheck, MdClose } from 'react-icons/md';
 
@@ -23,7 +23,11 @@ export default function Question({ question, handleAnswer }) {
   }, [question]);
 
   return (
-    <Container data-test="pergunta" data-resposta={status}>
+    <Container
+      data-test="pergunta"
+      data-resposta={status}
+      style={{ marginTop: '20px' }}
+    >
       <Heading size={2}>{question.question}</Heading>
 
       {question.answers.map(answer => {
@@ -44,6 +48,11 @@ export default function Question({ question, handleAnswer }) {
             data-test="opcao"
             onClick={() => {
               handleAnswer(question.id, answer.id);
+            }}
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginBottom: '5px',
             }}
           >
             <span>{answer.answer}</span>
