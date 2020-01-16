@@ -1,18 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
+import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { Container, Navbar } from 'react-bulma-components';
 
 import Routes from './routes';
 
 function App() {
   return (
     <BrowserRouter>
-      <header>
-        <Link to="/">Home</Link>
-        <Link to="/sobre" style={{ marginLeft: 8 }}>
-          Sobre
-        </Link>
-      </header>
-      <Routes />
+      <Container>
+        <Navbar />
+        <Routes />
+      </Container>
     </BrowserRouter>
   );
 }
