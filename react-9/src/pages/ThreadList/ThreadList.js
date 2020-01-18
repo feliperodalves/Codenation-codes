@@ -29,9 +29,7 @@ export default function ThreadList() {
       ) : (
         <Container>
           {threads.map(t => (
-            <Thread key={t.id} thread={t}>
-              {t.id}
-            </Thread>
+            <Thread key={t.id} thread={t} />
           ))}
         </Container>
       )}

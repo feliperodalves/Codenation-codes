@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Thread from '../../components/Thread';
 import api from '../../services/api';
 
@@ -23,6 +23,17 @@ export default function ThreadDetail({ match }) {
   return redirect ? (
     <Redirect to="/404" />
   ) : (
-    <>{loading ? <div>Carregando</div> : <Thread thread={thread} />}</>
+    <>
+      {loading ? (
+        <div>Carregando</div>
+      ) : (
+        <>
+          <Link to="/" data-test="voltar">
+            Voltar para o início
+          </Link>
+          <Thread thread={thread} />
+        </>
+      )}
+    </>
   );
 }

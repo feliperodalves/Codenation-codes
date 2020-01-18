@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Container, Navbar } from 'react-bulma-components';
+import { Container, Navbar, Heading } from 'react-bulma-components';
 
 import Routes from './routes';
 
@@ -9,7 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <Container>
-        <Navbar />
+        <Navbar>
+          <Heading size={2}>Forum</Heading>
+        </Navbar>
         <Routes />
       </Container>
     </BrowserRouter>

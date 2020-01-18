@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { Box, Media, Content } from 'react-bulma-components';
 import { MdMessage } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import Reply from './Reply';
 
 export default function Thread({ thread }) {
   return (
-    <Box>
+    <Box data-test="thread">
       <Media>
         <Media.Item>
           <Content>
@@ -19,7 +21,7 @@ export default function Thread({ thread }) {
               <br />
               {thread.body}
               <br />
-              <Link to={`/thread/${thread.slug}`}>
+              <Link to={`/thread/${thread.slug}`} data-test="link">
                 <span
                   style={{
                     display: 'flex',
@@ -31,16 +33,25 @@ export default function Thread({ thread }) {
                   <small>{thread.total_replies}</small>
                 </span>
               </Link>
+              <small>
+                <i>
+                  {`Postado em ${moment(thread.created_at)
+                    .locale('pt-br')
+                    .format('DD/MM/YYYY [as] hh:mm:ss')}`}
+                </i>
+              </small>
             </p>
           </Content>
+          {thread.replies && (
+            <Media.Item position="right">
+              <Content>
+                {thread.replies.map(r => (
+                  <Reply reply={r} />
+                ))}
+              </Content>
+            </Media.Item>
+          )}
         </Media.Item>
-        {thread.replies && (
-          <Content>
-            {thread.replies.map(r => (
-              <div>{r.body}</div>
-            ))}
-          </Content>
-        )}
       </Media>
     </Box>
   );
