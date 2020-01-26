@@ -1,19 +1,21 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { Container } from 'react-bulma-components';
 
 import Routes from './routes';
+import store from './store';
 
 function App() {
   return (
-    <BrowserRouter>
-      <header>
-        <Link to="/">Home</Link>
-        <Link to="/sobre" style={{ marginLeft: 8 }}>
-          Sobre
-        </Link>
-      </header>
-      <Routes />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Container>
+          <Routes />
+        </Container>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

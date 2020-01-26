@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NotFound = () => (
-  <div className="not-found">
-    Página não encontrada
-    <Link to="/">Voltar</Link>
-  </div>
-);
-
-export default NotFound;
+export default function NotFound() {
+  return (
+    <Link to="/" data-test="voltar">
+      Voltar para o início
+    </Link>
+  );
+}
