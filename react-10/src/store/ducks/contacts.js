@@ -1,22 +1,43 @@
+import uuid from 'uuid';
 // Action Types
 
 export const Types = {
   CREATE: 'contacts/CREATE',
   DELETE: 'contacts/DELETE',
+  EDIT: 'contacts/EDIT',
+  LIST: 'contacts/LIST',
 };
 
 // Reducer
 
-const initialState = {
-  contacts: [],
-};
+const initialState = [];
 
-export default function reducer(state = initialState, action) {
+export default function contacts(state = initialState, action) {
   switch (action.type) {
     case Types.CREATE:
-      return { ...state };
+      return [
+        ...state,
+        {
+          id: uuid(),
+          name: action.payload.name,
+          email: action.payload.email,
+        },
+      ];
+
+    case Types.EDIT:
+      return state.map(contact =>
+        contact.id === action.payload.id
+          ? {
+              ...contact,
+              name: action.payload.name,
+              email: action.payload.email,
+            }
+          : contact
+      );
+
     case Types.DELETE:
-      return { ...state };
+      return state.filter(contact => contact.id !== action.payload.id);
+
     default:
       return state;
   }
@@ -24,18 +45,21 @@ export default function reducer(state = initialState, action) {
 
 // Action Creators
 
-export function createContact(name, email) {
-  return {
+export const Creators = {
+  createContact: ({ name, email }) => ({
     type: Types.CREATE,
-    payload: {
-      name,
-      email,
-    },
-  };
-}
+    payload: { name, email },
+  }),
 
-export function deleteContact() {
-  return {
-    type: Types.DELETE,
-  };
-}
+  deleteContact: id => {
+    return {
+      type: Types.DELETE,
+      payload: { id },
+    };
+  },
+
+  editContact: ({ id, name, email }) => ({
+    type: Types.EDIT,
+    payload: { id, name, email },
+  }),
+};

@@ -2,9 +2,15 @@ import React from 'react';
 import { Level, Heading, Button } from 'react-bulma-components';
 import { Link } from 'react-router-dom';
 
-export default function NavbarComponent({ title, newContact, home }) {
+export default function NavbarComponent({
+  title,
+  newContact,
+  home,
+  onSubmit,
+  ...rest
+}) {
   return (
-    <Level renderAs="nav">
+    <Level renderAs="nav" {...rest}>
       <Level.Side align="left">
         <Level.Item>
           <Heading>{title}</Heading>
@@ -13,12 +19,25 @@ export default function NavbarComponent({ title, newContact, home }) {
       <Level.Side align="right">
         {!home ? (
           <Level.Item>
-            <Button type="button">Cancelar|Voltar</Button>
+            <Link to="/">
+              <Button type="button">
+                {newContact ? 'Cancelar' : 'Voltar'}
+              </Button>
+            </Link>
+            <Button
+              type="button"
+              onClick={onSubmit}
+              data-test={newContact ? 'salvar' : 'criar'}
+            >
+              {newContact ? 'Salvar' : 'Criar Contato'}
+            </Button>
           </Level.Item>
         ) : (
           <Level.Item>
-            <Link to="edit">
-              <Button type="button">Adicionar Contato</Button>
+            <Link to="create">
+              <Button type="button" data-test="novo-contato">
+                Adicionar Contato
+              </Button>
             </Link>
           </Level.Item>
         )}

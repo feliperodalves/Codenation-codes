@@ -9,8 +9,8 @@ const Routes = () => (
   <>
     <Switch>
       <Route exact path="/" component={ContactList} />
-      <Route exact path="/edit" component={EditContact} />
-      <Route path="/edit/:id" component={EditContact} />
+      <Route exact path="/create" component={EditContact} />
+      <Route path="/:contact_id/edit" component={EditContact} />
       <Route exact path="/404" render={NotFound} />
       <Route path="*" render={() => <Redirect to="/404" />} />
     </Switch>
